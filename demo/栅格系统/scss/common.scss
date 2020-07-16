@@ -1,0 +1,139 @@
+$col: (1/12)*100%;
+$gutters: 0.3%;
+$rowGap: 10px;
+$colTopGap: 5px;
+.container {
+  width: 100%;
+  box-sizing: border-box;
+
+  .row {
+    display: block;
+    box-sizing: inherit;
+    width: 100%;
+    margin-top: $rowGap;
+    margin-bottom: $rowGap;
+    clear: both;
+    //清除浮动
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    > .col-1, > .col-2, > .col-3, > .col-4, > .col-5, > .col-6, > .col-7, > .col-8, > .col-9, > .col-10, > .col-11, > .col-12 {
+      box-sizing: inherit;
+      float: left;
+      margin-left: $gutters;
+      margin-right: $gutters;
+      min-height: 1px;
+      position: relative;
+      //行内换行时，在col-*上使用
+      &.col-top-gap{
+        margin-top: $colTopGap;
+      }
+      //test
+      background: rgba(0, 0, 0, 0.5);
+      height: 20px;
+      border: 1px solid red;
+    }
+
+    //列宽
+    > .col-1 {
+      width: $col - 2*$gutters;
+    }
+
+    > .col-2 {
+      width: 2*$col - 2*$gutters;
+    }
+
+    > .col-3 {
+      width: 3*$col - 2*$gutters;
+    }
+
+    > .col-4 {
+      width: 4*$col - 2*$gutters;
+    }
+
+    > .col-5 {
+      width: 5*$col - 2*$gutters;
+    }
+
+    > .col-6 {
+      width: 6*$col - 2*$gutters;
+    }
+
+    > .col-7 {
+      width: 7*$col - 2*$gutters;
+    }
+
+    > .col-8 {
+      width: 8*$col - 2*$gutters;
+    }
+
+    > .col-9 {
+      width: 9*$col - 2*$gutters;
+    }
+
+    > .col-10 {
+      width: 10*$col - 2*$gutters;
+    }
+
+    > .col-11 {
+      width: 11*$col - 2*$gutters;
+    }
+
+    > .col-12 {
+      width: 12*$col - 2*$gutters;
+    }
+
+    // 列偏移
+    > .col-offset-1 {
+      margin-left: 1*$col;
+    }
+
+    > .col-offset-2 {
+      margin-left: 2*$col;
+    }
+
+    > .col-offset-3 {
+      margin-left: 3*$col;
+    }
+
+    > .col-offset-4 {
+      margin-left: 4*$col;
+    }
+
+    > .col-offset-5 {
+      margin-left: 5*$col;
+    }
+
+    > .col-offset-6 {
+      margin-left: 6*$col;
+    }
+
+    > .col-offset-7 {
+      margin-left: 7*$col;
+    }
+
+    > .col-offset-8 {
+      margin-left: 8*$col;
+    }
+
+    > .col-offset-9 {
+      margin-left: 9*$col;
+    }
+
+    > .col-offset-10 {
+      margin-left: 10*$col;
+    }
+
+    > .col-offset-11 {
+      margin-left: 11*$col;
+    }
+
+    > .col-offset-12 {
+      margin-left: 6*$col;
+    }
+  }
+}

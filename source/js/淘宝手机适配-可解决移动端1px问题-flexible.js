@@ -1,4 +1,4 @@
-(function(win, lib) {
+(function (win, lib) {
     var doc = win.document; // win = window,lib = window.lib;
     var docEl = doc.documentElement;
     var metaEl = doc.querySelector('meta[name="viewport"]');
@@ -98,11 +98,11 @@
      * 如此便完成了rem的自动适配
      */
 
-    win.addEventListener('resize', function() {
+    win.addEventListener('resize', function () {
         clearTimeout(tid);
         tid = setTimeout(refreshRem, 300);
     }, false);
-    win.addEventListener('pageshow', function(e) {
+    win.addEventListener('pageshow', function (e) {
         if (e.persisted) {
             clearTimeout(tid);
             tid = setTimeout(refreshRem, 300);
@@ -125,7 +125,7 @@
     flexible.dpr = win.dpr = dpr;
     flexible.refreshRem = refreshRem; // 页面初始化，重设页面rem
     // rem转换为px
-    flexible.rem2px = function(d) {
+    flexible.rem2px = function (d) {
         var val = parseFloat(d) * this.rem;
         if (typeof d === 'string' && d.match(/rem$/)) {
             val += 'px';
@@ -134,7 +134,7 @@
     }
 
     // px转换为rem
-    flexible.px2rem = function(d) {
+    flexible.px2rem = function (d) {
         var val = parseFloat(d) / this.rem;
         if (typeof d === 'string' && d.match(/px$/)) {
             val += 'rem';

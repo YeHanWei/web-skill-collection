@@ -1,0 +1,34 @@
+// 多行文本溢出省略（兼容性好）
+@mixin multiTextEllipsis($bg, $lineNum, $lineHeight) {
+    background: $bg;
+    height: $lineNum*$lineHeight;
+    line-height: $lineHeight;
+    overflow: hidden;
+    position: relative;
+    &::after {
+        content: "...";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        line-height: $lineHeight;
+        width: $lineHeight;
+        background: inherit;
+    }
+}
+
+// 单行文本溢出省略
+@mixin singleTextEllipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.multi-wrap {
+    width: 200px;
+    @include multiTextEllipsis(white, 3, 20px);
+}
+
+.single-wrap{
+    width: 200px;
+    @include singleTextEllipsis;
+}

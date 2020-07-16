@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div style="height: 500px;background: green;">
+    <div style="height: 300px;background: red" id="dom">
+
+    </div>
+</div>
+
+</body>
+<script src="../../source/js/JS.js"></script>
+<script>
+        var dom = document.getElementById("dom")
+        JS.addEvent(dom,'click', function() {
+            console.log(JS.target)
+        })
+        console.log(JS.browser)
+</script>
+</html>
