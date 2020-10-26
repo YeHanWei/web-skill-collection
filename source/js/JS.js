@@ -1,7 +1,6 @@
 /* 原生JS浏览器兼容性解决方案及常用方法封装 */
 
-var JSMODULE = function () {
-}
+var JSMODULE = function () {}
 
 /* 事件部分 */
 JSMODULE.prototype = {
@@ -11,7 +10,12 @@ JSMODULE.prototype = {
     get target() {
         return this.event.target || this.event.srcElement
     },
-    /*事件绑定*/
+    /**
+     * 添加事件（兼容浏览器）
+     * @param dom dom节点
+     * @param type 事件类型
+     * @param fn 事件响应函数
+     */
     addEvent: function (dom, type, fn) {
         if (dom.addEventListener) {
             dom.addEventListener(type, fn, false);
@@ -21,8 +25,8 @@ JSMODULE.prototype = {
             dom['on' + type] = fn
         }
     },
-    /* 浏览器版本 */
-    browser: (function (window) {
+    /* 检查浏览器版本 */
+    browser: function () {
         var document = window.document,
             navigator = window.navigator,
             agent = navigator.userAgent.toLowerCase(),
@@ -166,8 +170,64 @@ JSMODULE.prototype = {
             console.log("error");
         }
         return System;
-
-    })(window)
+    },
+    /* 检查数据类型 */
+    checkType: function (value) {
+        if (value === null) {
+            return 'null'
+        } else if (typeof value === 'object') {
+            var typeStr = Object.prototype.toString.call(value)
+            var type = typeStr.split(' ')[1].split('')
+            type.pop()
+            return type.join('');
+        } else {
+            return typeof value
+        }
+    },
+    /* 计算浮点数相乘 */
+    mul (value1, value2) {
+        var len = 0, v1 = value1, v2 = value2;
+        if ((value1.toString()).indexOf('.') !== -1) {
+            len += value1.toString().split('.')[1].length
+            v1 = parseInt(value1.toString().replace('.', ''))
+        }
+        if (value2.toString().indexOf('.') !== -1) {
+            len += value2.toString().split('.')[1].length
+            v2 = parseInt(value2.toString().replace('.', ''))
+        }
+        return (v1 * v2) / Math.pow(10, len)
+    },
+    /* 浮点数除法 */
+    div (value1, value2) {
+        var len1 = 0, len2 = 0, v1 = value1, v2 = value2;
+        if ((value1.toString()).indexOf('.') !== -1) {
+            len1 = value1.toString().split('.')[1].length
+            v1 = parseInt(value1.toString().replace('.', ''))
+        }
+        if (value2.toString().indexOf('.') !== -1) {
+            len2 = value2.toString().split('.')[1].length
+            v2 = parseInt(value2.toString().replace('.', ''))
+        }
+        return (v1 / v2) / Math.pow(10, Math.abs(len1 - len2));
+    },
+    /* 浮点数加法 */
+    add (value1, value2) {
+        var len1 = 0, len2 = 0, v1 = value1, v2 = value2;
+        if ((value1.toString()).indexOf('.') !== -1) {
+            len1 = value1.toString().split('.')[1].length
+        }
+        if (value2.toString().indexOf('.') !== -1) {
+            len2 = value2.toString().split('.')[1].length
+        }
+        var max = Math.max(len1, len2)
+        v1 = value1 * Math.pow(10, max)
+        v2 = value2 * Math.pow(10, max)
+        return (v1 + v2) / Math.pow(10, max);
+    },
+    /* 浮点数减法 */
+    sub (value1, value2) {
+        return this.add(value1, -value2)
+    }
 }
 
 

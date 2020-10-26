@@ -18,6 +18,30 @@
         JS.addEvent(dom,'click', function() {
             console.log(JS.target)
         })
-        console.log(JS.browser)
+        var num = 1;
+        var str = 'zifuchuan';
+        var bool = true;
+        var undifnd = undifnd;
+        var nul = null;
+        var obj = {};
+        var arr = [];
+        var date = new Date();
+        var fn = function () {}
+        var reg = RegExp(/3/)
+        var nan = NaN
+        console.log(num, JS.checkType(num))
+        console.log(str, JS.checkType(str))
+        console.log(bool, JS.checkType(bool))
+        console.log(undifnd, JS.checkType(undifnd))
+        console.log(nul, JS.checkType(nul))
+        console.log(obj, JS.checkType(obj))
+        console.log(arr, JS.checkType(arr))
+        console.log(date, JS.checkType(date))
+        console.log(reg, JS.checkType(reg))
+        console.log(nan, JS.checkType(nan))
+        console.log(new Number(2), JS.checkType(new Number(2)))
+
+        console.log(screen)
+        console.log(window)
 </script>
 </html>
